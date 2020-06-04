@@ -1,3 +1,4 @@
+import math
 # A binary gap within a positive integer N is any maximal sequence of consecutive zeros that is surrounded by ones at
 # both ends in the binary representation of N.
 #
@@ -23,5 +24,26 @@
 # N is an integer within the range [1..2,147,483,647].
 
 
+def __trim_binary_end(N: int) -> int:
+
+    while N % 2 == 0:
+        N = N // 2
+    return N
+
+
 def solution(N):
-    pass
+
+    assert N > 0
+    N = __trim_binary_end(N)
+    longest_gap = current_gap = 0
+
+    while N >= 1:
+        rest = N % 2
+        N = N // 2
+        if rest == 0:
+            current_gap += 1
+        else:
+            longest_gap = max(longest_gap, current_gap)
+            current_gap = 0
+
+    return longest_gap

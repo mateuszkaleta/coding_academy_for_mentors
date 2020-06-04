@@ -20,4 +20,13 @@
 
 
 def solution(card_number):
-    pass
+
+    sum_ = int(card_number[-1])
+    card_number = card_number[:-1][::-1]
+    for position, digit in enumerate(card_number):
+        digit = int(digit)
+        if position % 2 == 0:
+            digit *= 2
+            digit = digit - 9 if digit > 9 else digit
+        sum_ += digit
+    return sum_ % 10 == 0

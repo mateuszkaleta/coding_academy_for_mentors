@@ -40,4 +40,5 @@
 
 
 def solution(A, K):
-    pass
+    split_point = (len(A) - K) % len(A)
+    return A[split_point:] + A[:split_point]

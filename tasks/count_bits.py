@@ -14,4 +14,13 @@
 
 
 def solution(A, B):
-    pass
+
+    assert A >= 0
+    assert B >= 0
+
+    product = A*B
+    amount_of_ones = 0
+    while product >= 1:
+        amount_of_ones += product % 2
+        product //= 2
+    return amount_of_ones
